@@ -894,7 +894,6 @@ update_sh() {
   fi
 }
 
-update_sh
 echo && echo -e "                 gost 一键安装配置脚本"${Red_font_prefix}[${shell_version}]${Font_color_suffix}"
   ----------- KANIKIG -----------
   特性: (1)本脚本采用systemd及gost配置文件对gost进行管理
@@ -917,6 +916,7 @@ echo && echo -e "                 gost 一键安装配置脚本"${Red_font_prefi
 ————————————
  ${Green_font_prefix}10.${Font_color_suffix} gost定时重启配置
  ${Green_font_prefix}11.${Font_color_suffix} 自定义TLS证书配置
+ ${Green_font_prefix}12.${Font_color_suffix} 更新脚本
 ————————————" && echo
 read -e -p " 请输入数字 [1-9]:" num
 case "$num" in
@@ -972,6 +972,9 @@ case "$num" in
   ;;
 11)
   cert
+  ;;
+12)
+  update_sh
   ;;
 *)
   echo "请输入正确数字 [1-9]"
