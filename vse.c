@@ -10,7 +10,8 @@
 #include <sys/socket.h>
 #include <netinet/ip.h>
 #include <netinet/udp.h>
- 
+#include <arpa/inet.h>
+
 #define MAX_PACKET_SIZE 4096
 #define PHI 0x9e3779b9
  
