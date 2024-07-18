@@ -712,7 +712,7 @@ install_deps() {
 
 			if ! command_exists python; then
 				apt_get_update
-				( set -x; sleep 3; apt-get install -y -q python )
+				( set -x; sleep 3; apt-get install -y -q python3 )
 			fi
 			;;
 		fedora|centos|redhat|oraclelinux|photon)
