@@ -65,7 +65,7 @@ function check_new_ver() {
   # deprecated
   ct_new_ver=$(wget --no-check-certificate -qO- -t2 -T3 https://api.github.com/repos/ginuerzh/gost/releases/latest | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g')
   if [[ -z ${ct_new_ver} ]]; then
-    ct_new_ver="2.11.2"
+    ct_new_ver="2.12.0"
     echo -e "${Error} gost 最新版本获取失败，正在下载v${ct_new_ver}版"
   else
     echo -e "${Info} gost 目前最新版本为 ${ct_new_ver}"
@@ -96,19 +96,19 @@ function Install_ct() {
   read -e -p "是否使用？[y/n]:" addyn
   [[ -z ${addyn} ]] && addyn="n"
   if [[ ${addyn} == [Yy] ]]; then
-    rm -rf gost_linux_"$bit"_"$ct_new_ver".tar.gz
-    wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost_linux_"$bit"_"$ct_new_ver".tar.gz
-    tar -zxvf gost_linux_"$bit"_"$ct_new_ver".tar.gz
-    mv gost-linux-"$bit"-"$ct_new_ver" gost
+    rm -rf gost_"$ct_new_ver"_linux_"$bit".tar.gz
+    wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost_"$ct_new_ver"_linux_"$bit".tar.gz
+    tar -zxvf gost_"$ct_new_ver"_linux_"$bit".tar.gz
+    mv gost_"$ct_new_ver"_linux_"$bit".tar.gz
     mv gost /usr/bin/gost
     chmod -R 777 /usr/bin/gost
     wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
     mkdir /etc/gost && wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/config.json && mv config.json /etc/gost && chmod -R 777 /etc/gost
   else
-    rm -rf gost_linux_"$bit"_"$ct_new_ver".tar.gz
-    wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost_linux_"$bit"_"$ct_new_ver".tar.gz
-    tar -zxvf gost_linux_"$bit"_"$ct_new_ver".tar.gz
-    mv gost-linux-"$bit"-"$ct_new_ver" gost
+    rm -rf gost_"$ct_new_ver"_linux_"$bit".tar.gz
+    wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost_"$ct_new_ver"_linux_"$bit".tar.gz
+    tar -zxvf gost_"$ct_new_ver"_linux_"$bit".tar.gz
+    mv gost_"$ct_new_ver"_linux_"$bit".tar.gz
     mv gost /usr/bin/gost
     chmod -R 777 /usr/bin/gost
     wget --no-check-certificate https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
