@@ -99,7 +99,6 @@ function Install_ct() {
     rm -rf gost_"$ct_new_ver"_linux_"$bit".tar.gz
     wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost_"$ct_new_ver"_linux_"$bit".tar.gz
     tar -zxvf gost_"$ct_new_ver"_linux_"$bit".tar.gz
-    mv gost_"$ct_new_ver"_linux_"$bit" gost
     mv gost /usr/bin/gost
     chmod -R 777 /usr/bin/gost
     wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
@@ -108,7 +107,6 @@ function Install_ct() {
     rm -rf gost_"$ct_new_ver"_linux_"$bit".tar.gz
     wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost_"$ct_new_ver"_linux_"$bit".tar.gz
     tar -zxvf gost_"$ct_new_ver"_linux_"$bit".tar.gz
-    mv gost_"$ct_new_ver"_linux_"$bit" gost
     mv gost /usr/bin/gost
     chmod -R 777 /usr/bin/gost
     wget --no-check-certificate https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
