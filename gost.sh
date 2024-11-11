@@ -3,7 +3,7 @@ Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_p
 Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 shell_version="1.1.1"
-ct_new_ver="2.11.2" # 2.x 不再跟随官方更新
+ct_new_ver="2.12.0" # 2.x 不再跟随官方更新
 gost_conf_path="/etc/gost/config.json"
 raw_conf_path="/etc/gost/rawconf"
 function checknew() {
@@ -51,10 +51,10 @@ function Installation_dependency() {
   if [[ -z ${gzip_ver} ]]; then
     if [[ ${release} == "centos" ]]; then
       yum update
-      yum install -y gzip wget
+      yum install -y gzip wget tar
     else
       apt-get update
-      apt-get install -y gzip wget
+      apt-get install -y gzip wget tar
     fi
   fi
 }
@@ -96,18 +96,18 @@ function Install_ct() {
   read -e -p "是否使用？[y/n]:" addyn
   [[ -z ${addyn} ]] && addyn="n"
   if [[ ${addyn} == [Yy] ]]; then
-    rm -rf gost-linux-"$bit"-"$ct_new_ver".gz
-    wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost-linux-"$bit"-"$ct_new_ver".gz
-    gunzip gost-linux-"$bit"-"$ct_new_ver".gz
+    rm -rf gost-linux-"$bit"-"$ct_new_ver".tar.gz
+    wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost-linux-"$bit"-"$ct_new_ver".tar.gz
+    tar -zxvf gost-linux-"$bit"-"$ct_new_ver".tar.gz
     mv gost-linux-"$bit"-"$ct_new_ver" gost
     mv gost /usr/bin/gost
     chmod -R 777 /usr/bin/gost
     wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/gost.service && chmod -R 777 gost.service && mv gost.service /usr/lib/systemd/system
     mkdir /etc/gost && wget --no-check-certificate https://gotunnel.oss-cn-shenzhen.aliyuncs.com/config.json && mv config.json /etc/gost && chmod -R 777 /etc/gost
   else
-    rm -rf gost-linux-"$bit"-"$ct_new_ver".gz
-    wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost-linux-"$bit"-"$ct_new_ver".gz
-    gunzip gost-linux-"$bit"-"$ct_new_ver".gz
+    rm -rf gost-linux-"$bit"-"$ct_new_ver".tar.gz
+    wget --no-check-certificate https://github.com/ginuerzh/gost/releases/download/v"$ct_new_ver"/gost-linux-"$bit"-"$ct_new_ver".tar.gz
+    tar -zxvf gost-linux-"$bit"-"$ct_new_ver".tar.gz
     mv gost-linux-"$bit"-"$ct_new_ver" gost
     mv gost /usr/bin/gost
     chmod -R 777 /usr/bin/gost
