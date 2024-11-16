@@ -4,5 +4,5 @@
 * 再次运行本脚本只需要输入`./gost.sh`回车即可
 * 启动iptables脚本
 ```shell script
-wget --no-check-certificate -O iptables.sh https://raw.githubusercontent.com/Zephyr177/note/main/iptables-pf.sh && bash iptables.sh
+wget --no-check-certificate -O iptables-pf.sh https://raw.githubusercontent.com/Zephyr177/note/main/iptables-pf.sh && bash iptables.sh
 ```
